@@ -1,0 +1,61 @@
+{
+  "name": "text-synchronizer",
+  "version": "1.0.0",
+  "description": "A text synchronizer application",
+  "main": "main.js",
+  "scripts": {
+    "start": "chcp 65001 && nodemon --watch main.js --exec electron .",
+    "dist": "electron-builder"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "zqyadam",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^6.0.11",
+    "electron-builder": "^21.2.0",
+    "nodemon": "^1.19.3"
+  },
+  "dependencies": {
+    "electron-is-dev": "^1.1.0",
+    "express": "^4.17.1",
+    "node-notifier": "^6.0.0",
+    "portfinder": "^1.0.24",
+    "qrcode": "^1.4.2",
+    "socket.io": "^2.3.0"
+  },
+  "build": {
+    "appId": "text-synchronizer",
+    "productName": "Text-Mobile2PC",
+    "asar": true,
+    "files": [
+      "**/*",
+      "!node_modules/*"
+    ],
+    "extraResources": "images/copy.png",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "images/logo_2x.png",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

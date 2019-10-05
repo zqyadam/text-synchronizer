@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>Text-Mobile2PC</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <style>
+      .input-field label {
+        color: #03a9f4;
+      }
+
+      /* icon prefix focus color */
+      .input-field .prefix.active {
+        color: #03a9f4;
+      }
+      .input-field textarea[class="materialize-textarea"]:focus {
+        border-bottom: 1px solid #03a9f4 !important;
+        box-shadow: 0 1px 0 0 #03a9f4 !important;
+      }
+      .input-field {
+        overflow-y: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper light-blue">
+          <a href="#" class="brand-logo left"><h5 style="margin-left: 10px;">Text-Mobile2PC</h5></a>
+          <ul id="nav-mobile" class="right ">
+            <li>
+              <a href="#" id="sync">
+                <i class="material-icons center">sync</i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="clear">
+                <i class="material-icons center">delete_sweep</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="input-field">
+        <textarea
+          id="textarea"
+          class="materialize-textarea"
+          placeholder="在这里输入信息！"
+          cols="20"
+          style="height: 70vh;"
+        ></textarea>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>
