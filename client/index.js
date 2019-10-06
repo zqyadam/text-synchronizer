@@ -7,6 +7,7 @@
   // 同步按钮事件
   syncBtn.addEventListener("click", e => {
     e.preventDefault();
+    socket.emit("input", textarea.value);
   });
   // 清楚按钮事件
   clearBtn.addEventListener("click", e => {
