@@ -1,9 +1,18 @@
 const { ipcRenderer, clipboard } = require("electron");
 const notification = require("../utils/notification");
+const Store = require("electron-store");
+
+const configStore = new Store('config');
+
+let showNotification = configStore.get("showNotification");
 
 document.addEventListener("DOMContentLoaded", function() {
   var elems = document.querySelectorAll(".tooltipped");
+  var modalNode = document.querySelectorAll(".modal");
   M.Tooltip.init(elems);
+  M.Modal.init(modalNode);
+
+  // 请求服务器信息
   ipcRenderer.send("request-server-info");
 
   const copyBtn = document.querySelector("#copy");
@@ -21,7 +30,21 @@ document.addEventListener("DOMContentLoaded", function() {
   clearBtn.addEventListener("click", () => {
     textarea.value = "";
   });
+
+  /* Modal Action */
+  const btnSaveSetting = document.querySelector("#btn-save-setting");
+
+  btnSaveSetting.addEventListener("click", e => {
+    const showNotification = document.querySelector("#show-notification")
+      .checked;
+    console.log(showNotification);
+    configStore.set("showNotification", showNotification);
+  });
+
+  document.querySelector("#show-notification").checked = showNotification;
 });
+
+
 
 // 接收到消息，显示在textarea中
 let clipboardTimer = false;

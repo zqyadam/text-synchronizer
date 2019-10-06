@@ -27,13 +27,23 @@
         border-bottom: 1px solid #03a9f4 !important;
         box-shadow: 0 1px 0 0 #03a9f4 !important;
       }
+
+      .switch label input[type="checkbox"]:checked + .lever:after {
+        background-color: #03a9f4;
+      }
+
+      .switch label input[type="checkbox"]:checked + .lever {
+        background-color: #7cd3fc;
+      }
     </style>
   </head>
   <body>
     <header class="navbar-fixed">
       <nav>
         <div class="nav-wrapper light-blue">
-          <a href="#" class="brand-logo left"><h5 style="margin-left: 10px;">Text-Mobile2PC</h5></a>
+          <a href="#" class="brand-logo left"
+            ><h5 style="margin-left: 10px;">Text-Mobile2PC</h5></a
+          >
           <ul id="nav-mobile" class="right ">
             <li>
               <a
@@ -57,6 +67,17 @@
                 <i class="material-icons center">delete_sweep</i>
               </a>
             </li>
+            <li>
+              <a
+                href="#modal1"
+                id="settings"
+                class="tooltipped modal-trigger"
+                data-tooltip="设置"
+                data-position="bottom"
+              >
+                <i class="material-icons center">settings</i>
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -71,6 +92,37 @@
         ></textarea>
       </div>
     </main>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <div class="row">
+          <div class="input-field col s4">
+            <span class="right">显示右下角通知:</span>
+          </div>
+          <div class="input-field col s8 center">
+            <div class="switch ">
+              <label>
+                不显示通知
+                <input id="show-notification" type="checkbox" class="light-blue" checked />
+                <span class="lever"></span>
+                显示通知
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          id="btn-save-setting"
+          class="modal-close light-blue white-text btn-flat waves-effect waves-light"
+          >保存</a
+        >
+        <a href="#!" class="modal-close btn-flat waves-effect waves-light"
+          >取消</a
+        >
+      </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="./mainWindow.js"></script>
