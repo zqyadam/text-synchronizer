@@ -16,7 +16,7 @@ ipcRenderer.on("reply-server-info", (event, serverInfo) => {
 });
 
 function generateQRCode(text) {
-  QRCode.toCanvas(canvas, "http://192.168.3.110:5000", function(error) {
+  QRCode.toCanvas(canvas, text, function(error) {
     if (error) console.error(error);
     console.log("qrcode generate success!");
   });

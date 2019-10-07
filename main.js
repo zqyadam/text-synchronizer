@@ -53,13 +53,6 @@ function createQrWindow() {
     qrWindow = null;
   });
 
-  if (Notification.isSupported()) {
-    notification = new Notification({
-      title: "The title",
-      body: "The body"
-    });
-    notification.show();
-  }
 }
 
 function createMainWindow() {
