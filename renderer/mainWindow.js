@@ -2,21 +2,20 @@ const { ipcRenderer, clipboard } = require("electron");
 const notification = require("../utils/notification");
 const Store = require("electron-store");
 
-const configStore = new Store('config');
-
-let showNotification = configStore.get("showNotification");
+const configStore = new Store("config");
 
 document.addEventListener("DOMContentLoaded", function() {
   var elems = document.querySelectorAll(".tooltipped");
-  var modalNode = document.querySelectorAll(".modal");
+  var modalNode = document.querySelector("#modal1");
   M.Tooltip.init(elems);
-  M.Modal.init(modalNode);
-
+  let modalInst = M.Modal.init(modalNode);
+  console.log(modalInst);
   // 请求服务器信息
   ipcRenderer.send("request-server-info");
 
   const copyBtn = document.querySelector("#copy");
   const clearBtn = document.querySelector("#clear");
+  const settingsBtn = document.querySelector("#settings");
   const textarea = document.querySelector("#textarea");
 
   copyBtn.addEventListener("click", () => {
@@ -31,6 +30,12 @@ document.addEventListener("DOMContentLoaded", function() {
     textarea.value = "";
   });
 
+  settingsBtn.addEventListener("click", () => {
+    let showNotification = configStore.get("showNotification");
+    document.querySelector("#show-notification").checked = showNotification;
+    modalInst.open();
+  });
+
   /* Modal Action */
   const btnSaveSetting = document.querySelector("#btn-save-setting");
 
@@ -40,11 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log(showNotification);
     configStore.set("showNotification", showNotification);
   });
-
-  document.querySelector("#show-notification").checked = showNotification;
 });
-
-
 
 // 接收到消息，显示在textarea中
 let clipboardTimer = false;
